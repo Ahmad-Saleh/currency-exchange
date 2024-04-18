@@ -28,12 +28,12 @@ public class ExchangeRateService {
     @Value("${exchange-rate.audit.enabled}")
     private boolean auditEnabled;
 
-    public BigDecimal getExchangeRate(ExchangeRequest exchangeRequest) {
+    public BigDecimal calculateExchangeRate(ExchangeRequest exchangeRequest) {
         if(auditEnabled) {
             logUserRequest(exchangeRequest);
         }
         validateRequest(exchangeRequest);
-        return calculateExchangeRate(exchangeRequest);
+        return doCalculateExchangeRate(exchangeRequest);
     }
 
     private void validateRequest(ExchangeRequest exchangeRequest) {
@@ -58,7 +58,7 @@ public class ExchangeRateService {
         auditRepository.save(auditEntity);
     }
 
-    private BigDecimal calculateExchangeRate(ExchangeRequest exchangeRequest) {
+    private BigDecimal doCalculateExchangeRate(ExchangeRequest exchangeRequest) {
         ExchangeRateEntity exchangeRate = exchangeRateRepository.findByBaseCurrencyAndQuotedCurrency(
                 exchangeRequest.getBaseCurrency().getCurrencyCode(), exchangeRequest.getQuotedCurrency().getCurrencyCode());
 
