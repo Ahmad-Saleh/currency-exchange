@@ -54,7 +54,7 @@ public class ExchangeRateService {
     private void logUserRequest(ExchangeRequest exchangeRequest) {
         ExchangeRequestAuditEntity auditEntity = exchangeRequestMapper.toEntity(exchangeRequest);
         auditEntity.setRequestTime(LocalDateTime.now());
-        auditEntity.setInternalReference(UUID.randomUUID().toString());
+        auditEntity.setExchangeRateRequestReference(UUID.randomUUID().toString());
         auditRepository.save(auditEntity);
     }
 

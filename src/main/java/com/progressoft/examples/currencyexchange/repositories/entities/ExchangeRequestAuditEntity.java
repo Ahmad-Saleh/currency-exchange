@@ -19,5 +19,5 @@ public class ExchangeRequestAuditEntity {
     private String quotedCurrency;
     private String exchangeType;
     private LocalDateTime requestTime;
-    private String internalReference;
+    private String exchangeRateRequestReference;
 }
