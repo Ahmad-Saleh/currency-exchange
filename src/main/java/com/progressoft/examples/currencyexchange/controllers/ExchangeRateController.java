@@ -15,7 +15,7 @@ public class ExchangeRateController {
 
     private final ExchangeRateService exchangeRateService;
 
-    @PostMapping("/api/v1/exchange-rate")
+    @PostMapping("/api/v1/calculate-exchange-rate")
     public String getExchangeRate(@RequestBody ExchangeRequest exchangeRequest){
         return exchangeRateService.getExchangeRate(exchangeRequest).toString();
     }
