@@ -1,3 +1,3 @@
 # currency-exchange
 
-Run and try it
+Understand it, run it and try it!
